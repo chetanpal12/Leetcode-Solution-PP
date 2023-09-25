@@ -1,11 +1,11 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        s+=t; int c=0;
-        for(auto x: s)
-        {
-            c^=x;   //see notes new approach
-        }
-        return c;
+        int sum = 0;
+        for (auto &c: t) sum+=c;
+        for (auto &c: s) sum-=c;
+        return (char)sum;
     }
 };
+
+   
