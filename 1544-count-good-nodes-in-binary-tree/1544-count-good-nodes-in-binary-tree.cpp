@@ -10,20 +10,20 @@
  * };
  */
 class Solution {
-public: 
-    int ans=0;
-    void findgoodnodes(TreeNode* root,int max_up_till){
+public:
+   
+    void FindGoodNodes(TreeNode* root,int maxinodes,int &ans){
         if(!root)return;
-        if(root->val>=max_up_till){
-            max_up_till=root->val;
+        if(root->val>=maxinodes){
             ans++;
+            maxinodes=max(maxinodes,root->val);
         }
-        findgoodnodes(root->left,max_up_till);
-        findgoodnodes(root->right,max_up_till);
+        FindGoodNodes(root->left,maxinodes,ans);
+        FindGoodNodes(root->right,maxinodes,ans);
     }
     int goodNodes(TreeNode* root) {
-        if(!root)return 0;
-        findgoodnodes(root,root->val);
+        int ans=0;
+        FindGoodNodes(root,root->val,ans);
         return ans;
     }
 };
