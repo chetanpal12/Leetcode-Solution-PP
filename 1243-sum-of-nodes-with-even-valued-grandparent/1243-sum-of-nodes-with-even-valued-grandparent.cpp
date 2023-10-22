@@ -11,8 +11,7 @@
  */
 class Solution {
 public:
-    int ans=0;
-    void findParent(TreeNode*root){
+    void findSumOfNodes(TreeNode* root,int &ans){
         if(!root)return;
         if(root->val%2==0){
             if(root->left){
@@ -21,7 +20,7 @@ public:
                 }
                 if(root->left->right){
                     ans+=root->left->right->val;
-                } 
+                }
             }
             if(root->right){
                 if(root->right->right){
@@ -29,14 +28,15 @@ public:
                 }
                 if(root->right->left){
                     ans+=root->right->left->val;
-                } 
+                }
             }
         }
-        findParent(root->left);
-        findParent(root->right);
+        findSumOfNodes(root->left,ans);
+        findSumOfNodes(root->right,ans);
     }
     int sumEvenGrandparent(TreeNode* root) {
-        findParent(root);
+        int ans=0;
+        findSumOfNodes(root,ans);
         return ans;
     }
 };
