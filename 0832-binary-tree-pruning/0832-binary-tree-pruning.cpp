@@ -23,14 +23,8 @@
 class Solution {
 public:
     int hasOne(TreeNode* root){
-        if(!root)
-        return 0;
-        if(!root->left&&!root->right){
-            if(root->val==0)
-            return 0;
-            else
-            return 1;
-        }
+        if(!root) return 0;
+        if(!root->left&&!root->right)root->val;                      
         int lst=hasOne(root->left);
         int rst=hasOne(root->right);
         if(lst==0)
